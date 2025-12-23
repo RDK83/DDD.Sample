@@ -1,0 +1,3 @@
+﻿namespace Catalogue.Application.WarehouseMerchants.Queries;
+
+public record GetWarehouseMerchantByIdQuery(int WarehouseMerchantId);

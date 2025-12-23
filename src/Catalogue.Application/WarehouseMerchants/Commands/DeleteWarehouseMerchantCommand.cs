@@ -1,0 +1,3 @@
+﻿namespace Catalogue.Application.WarehouseMerchants.Commands;
+
+public record DeleteWarehouseMerchantCommand(int WarehouseMerchantId);
