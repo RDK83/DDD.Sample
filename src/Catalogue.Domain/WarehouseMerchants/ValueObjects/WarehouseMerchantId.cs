@@ -14,7 +14,7 @@ public record WarehouseMerchantId : IIntegerValueObject<WarehouseMerchantId>
 
     public static WarehouseMerchantId Create(int warehouseMerchantId)
     {
-        Guard.Against.Zero(warehouseMerchantId);
+        DomainGuard.AgainstZero(warehouseMerchantId);
 
         return new WarehouseMerchantId(warehouseMerchantId);
     }

@@ -16,11 +16,11 @@ public record WarehouseName : IStringValueObject<WarehouseName>
 
     public static WarehouseName Create(string warehouseName)
     {
-        Guard.Against.NullOrWhiteSpace(warehouseName);
+        DomainGuard.AgainstNullOrWhiteSpace(warehouseName);
 
         warehouseName = warehouseName.Trim();
 
-        Guard.Against.StringTooLong(warehouseName, MaxLength);
+        DomainGuard.AgainstStringTooLong(warehouseName, MaxLength);
 
         return new WarehouseName(warehouseName);
     }

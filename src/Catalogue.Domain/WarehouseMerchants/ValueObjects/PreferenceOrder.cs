@@ -14,7 +14,7 @@ public record PreferenceOrder : IIntegerValueObject<PreferenceOrder>, IComparabl
 
     public static PreferenceOrder Create(int preferenceOrder)
     {
-        Guard.Against.Negative(preferenceOrder);
+        DomainGuard.AgainstNegative(preferenceOrder);
         return new PreferenceOrder(preferenceOrder);
     }
 

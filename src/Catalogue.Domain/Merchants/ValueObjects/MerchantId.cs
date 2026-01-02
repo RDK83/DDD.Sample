@@ -14,7 +14,7 @@ public readonly record struct MerchantId : IIntegerValueObject<MerchantId>
 
     public static MerchantId Create(int merchantId)
     {
-        Guard.Against.Zero(merchantId);
+        DomainGuard.AgainstZero(merchantId);
 
         return new MerchantId(merchantId);
     }

@@ -16,11 +16,11 @@ public record MerchantCode : IStringValueObject<MerchantCode>
 
     public static MerchantCode Create(string merchantCode)
     {
-        Guard.Against.NullOrWhiteSpace(merchantCode);
+        DomainGuard.AgainstNullOrWhiteSpace(merchantCode);
 
         merchantCode = merchantCode.Trim().ToUpperInvariant();
 
-        Guard.Against.StringTooLong(merchantCode, MaxLength);
+        DomainGuard.AgainstStringTooLong(merchantCode, MaxLength);
 
         return new MerchantCode(merchantCode);
     }

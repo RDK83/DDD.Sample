@@ -14,7 +14,7 @@ public readonly record struct MediaId : IIntegerValueObject<MediaId>
 
     public static MediaId Create(int input)
     {
-        Guard.Against.Zero(input);
+        DomainGuard.AgainstZero(input);
 
         return new MediaId(input);
     }

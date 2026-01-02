@@ -16,11 +16,11 @@ public record MediaUrl : IStringValueObject<MediaUrl>
 
     public static MediaUrl Create(string input)
     {
-        Guard.Against.NullOrWhiteSpace(input);
+        DomainGuard.AgainstNullOrWhiteSpace(input);
 
         input = input.Trim();
 
-        Guard.Against.StringTooLong(input, MaxLength);
+        DomainGuard.AgainstStringTooLong(input, MaxLength);
 
         return new MediaUrl(input);
     }

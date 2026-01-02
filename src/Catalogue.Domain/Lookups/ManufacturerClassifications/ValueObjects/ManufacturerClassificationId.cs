@@ -14,7 +14,7 @@ public readonly record struct ManufacturerClassificationId : IIntegerValueObject
 
     public static ManufacturerClassificationId Create(int manufacturerClassificationId)
     {
-        Guard.Against.Zero(manufacturerClassificationId);
+        DomainGuard.AgainstZero(manufacturerClassificationId);
 
         return new ManufacturerClassificationId(manufacturerClassificationId);
     }

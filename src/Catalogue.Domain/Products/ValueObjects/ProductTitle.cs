@@ -16,11 +16,11 @@ public record ProductTitle : IStringValueObject<ProductTitle>
 
     public static ProductTitle Create(string productTitle)
     {
-        Guard.Against.NullOrWhiteSpace(productTitle);
+        DomainGuard.AgainstNullOrWhiteSpace(productTitle);
 
         productTitle = productTitle.Trim();
 
-        Guard.Against.StringTooLong(productTitle, MaxLength);
+        DomainGuard.AgainstStringTooLong(productTitle, MaxLength);
 
         return new ProductTitle(productTitle);
     }

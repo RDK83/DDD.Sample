@@ -16,11 +16,11 @@ public record WarehouseCode : IStringValueObject<WarehouseCode>
 
     public static WarehouseCode Create(string warehouseCode)
     {
-        Guard.Against.NullOrWhiteSpace(warehouseCode);
+        DomainGuard.AgainstNullOrWhiteSpace(warehouseCode);
 
         warehouseCode = warehouseCode.Trim().ToUpperInvariant();
 
-        Guard.Against.StringTooLong(warehouseCode, MaxLength);
+        DomainGuard.AgainstStringTooLong(warehouseCode, MaxLength);
 
         return new WarehouseCode(warehouseCode);
     }

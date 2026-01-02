@@ -37,7 +37,7 @@ public class Merchant : BaseAggregate<MerchantId>
 
     public void UpdateDetails(EditMerchantMutation mutation)
     {
-        Guard.Against.Null(mutation);
+        DomainGuard.AgainstNull(mutation);
 
         MerchantName = mutation.MerchantName;
         Active = mutation.Active;

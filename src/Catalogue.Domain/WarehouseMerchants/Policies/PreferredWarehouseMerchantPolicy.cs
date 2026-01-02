@@ -10,7 +10,7 @@ public class PreferredWarehouseMerchantPolicy
     public IReadOnlyCollection<WarehouseMerchantStatus> DeterminePreferredWarehouseMerchants(
         IReadOnlyCollection<WarehouseMerchantStatus> warehouseMerchants)
     {
-        Guard.Against.Null(warehouseMerchants);
+        DomainGuard.AgainstNull(warehouseMerchants);
 
         var merchantPreferences = new Dictionary<MerchantId, WarehouseMerchantStatus>();
 
@@ -33,7 +33,7 @@ public class PreferredWarehouseMerchantPolicy
     public WarehouseMerchantStatus DetermineMostPreferredWarehouseMerchant(
         IReadOnlyCollection<WarehouseMerchantStatus> warehouseMerchants)
     {
-        Guard.Against.Null(warehouseMerchants);
+        DomainGuard.AgainstNull(warehouseMerchants);
 
         var preferredWarehouseMerchants =
             DeterminePreferredWarehouseMerchants(warehouseMerchants).OrderBy(wm => wm.PreferenceOrder);

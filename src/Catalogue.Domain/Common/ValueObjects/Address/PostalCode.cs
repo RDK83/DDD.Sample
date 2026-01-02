@@ -18,12 +18,12 @@ public record PostalCode : IValueObject<PostalCode, string, Country>
 
     public static PostalCode Create(string postcode, Country countryId)
     {
-        Guard.Against.NullOrWhiteSpace(postcode);
-        Guard.Against.Null(countryId);
+        DomainGuard.AgainstNullOrWhiteSpace(postcode);
+        DomainGuard.AgainstNull(countryId);
 
         postcode = postcode.Trim().ToUpperInvariant();
 
-        Guard.Against.StringTooLong(postcode, AddressValidationRules.PostCodeMaxLength);
+        DomainGuard.AgainstStringTooLong(postcode, AddressValidationRules.PostCodeMaxLength);
 
         return new PostalCode(postcode, countryId);
     }

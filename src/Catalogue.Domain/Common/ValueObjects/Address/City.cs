@@ -16,11 +16,11 @@ public record City : IStringValueObject<City>
 
     public static City Create(string city)
     {
-        Guard.Against.NullOrWhiteSpace(city);
+        DomainGuard.AgainstNullOrWhiteSpace(city);
 
         city = city.Trim();
 
-        Guard.Against.StringTooLong(city, MaxLength);
+        DomainGuard.AgainstStringTooLong(city, MaxLength);
 
         return new City(city);
     }

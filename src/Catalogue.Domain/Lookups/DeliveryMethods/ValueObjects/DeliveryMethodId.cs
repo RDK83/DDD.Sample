@@ -18,11 +18,11 @@ public record DeliveryMethodId : IStringValueObject<DeliveryMethodId>
 
     public static DeliveryMethodId Create(string deliveryMethodId)
     {
-        Guard.Against.NullOrWhiteSpace(deliveryMethodId);
+        DomainGuard.AgainstNullOrWhiteSpace(deliveryMethodId);
 
         deliveryMethodId = deliveryMethodId.Trim();
 
-        Guard.Against.LengthOutOfRange(deliveryMethodId, MinLength, MaxLength);
+        DomainGuard.AgainstLengthOutOfRange(deliveryMethodId, MinLength, MaxLength);
 
         return new DeliveryMethodId(deliveryMethodId);
     }

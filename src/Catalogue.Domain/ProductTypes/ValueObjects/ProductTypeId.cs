@@ -14,7 +14,7 @@ public readonly record struct ProductTypeId : IIntegerValueObject<ProductTypeId>
 
     public static ProductTypeId Create(int productTypeId)
     {
-        Guard.Against.Zero(productTypeId);
+        DomainGuard.AgainstZero(productTypeId);
 
         return new ProductTypeId(productTypeId);
     }

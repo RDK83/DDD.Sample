@@ -21,7 +21,7 @@ public record County : INullableStringValueObject<County>
 
         county = county.Trim();
 
-        Guard.Against.StringTooLong(county, MaxLength);
+        DomainGuard.AgainstStringTooLong(county, MaxLength);
 
         return new County(county);
     }

@@ -5,10 +5,11 @@ namespace Catalogue.Domain.Products.Policies;
 
 public class ProductToWarehouseMerchantValidityPolicy
 {
-    public IReadOnlyCollection<WarehouseMerchantStatus> DetermineValidForProduct(IReadOnlyCollection<WarehouseMerchantStatus> warehouseMerchants, Product product)
+    public IReadOnlyCollection<WarehouseMerchantStatus> DetermineValidForProduct(
+        IReadOnlyCollection<WarehouseMerchantStatus> warehouseMerchants, Product product)
     {
-        Guard.Against.Null(product);
-        Guard.Against.NullOrEmpty(warehouseMerchants);
+        DomainGuard.AgainstNull(product);
+        DomainGuard.AgainstNullOrEmpty(warehouseMerchants);
 
         var activeWarehouseMerchants = warehouseMerchants.Where(wm => wm.Active);
 

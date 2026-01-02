@@ -16,8 +16,8 @@ public record MediaType : LookupObject<MediaTypeId>
 
     public static MediaType Create(string name)
     {
-        Guard.Against.NullOrWhiteSpace(name);
-        Guard.Against.StringTooLong(name, MediaTypeValidationRules.NameMaxLength);
+        DomainGuard.AgainstNullOrWhiteSpace(name);
+        DomainGuard.AgainstStringTooLong(name, MediaTypeValidationRules.NameMaxLength);
 
         return new MediaType(name);
     }

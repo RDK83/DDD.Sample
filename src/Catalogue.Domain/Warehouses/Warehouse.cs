@@ -48,7 +48,7 @@ public class Warehouse : BaseAggregate<WarehouseId>
 
     public void UpdateDetails(EditWarehouseMutation mutation)
     {
-        Guard.Against.Null(mutation);
+        DomainGuard.AgainstNull(mutation);
 
         WarehouseName = mutation.WarehouseName;
         Active = mutation.Active;
@@ -69,7 +69,7 @@ public class Warehouse : BaseAggregate<WarehouseId>
 
     public void AddDeliveryMethod(NewWarehouseDeliveryMethodMutation mutation)
     {
-        Guard.Against.Null(mutation);
+        DomainGuard.AgainstNull(mutation);
 
         if (_warehouseDeliveryMethods.Any(wdm => wdm.DeliveryMethodId.Equals(mutation.DeliveryMethodId)))
             throw new ChildEntityAlreadyExistsException(nameof(Warehouse), nameof(WarehouseDeliveryMethod),

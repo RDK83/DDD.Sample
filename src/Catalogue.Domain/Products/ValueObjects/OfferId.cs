@@ -14,7 +14,7 @@ public readonly record struct OfferId : IIntegerValueObject<OfferId>
 
     public static OfferId Create(int offerId)
     {
-        Guard.Against.Zero(offerId);
+        DomainGuard.AgainstZero(offerId);
 
         return new OfferId(offerId);
     }

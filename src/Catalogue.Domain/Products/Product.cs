@@ -52,7 +52,9 @@ public class Product : BaseAggregate<ProductCode>, IHasUpdatedTimeStamp
     private readonly List<ProductMedia> _productMedias;
     private readonly List<Offer> _offers;
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     private Product()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     {
         //EF required
     }
@@ -102,7 +104,7 @@ public class Product : BaseAggregate<ProductCode>, IHasUpdatedTimeStamp
 
     public void UpdateDetails(EditProductMutation mutation)
     {
-        Guard.Against.Null(mutation);
+        DomainGuard.AgainstNull(mutation);
 
         // strings
         ProductTitle = mutation.ProductTitle;
@@ -183,7 +185,7 @@ public class Product : BaseAggregate<ProductCode>, IHasUpdatedTimeStamp
 
     public void AddOffer(NewOfferMutation values)
     {
-        Guard.Against.Null(values);
+        DomainGuard.AgainstNull(values);
 
         var existingOffer = _offers
             .FirstOrDefault(o => o.MerchantId.Equals(values.MerchantId) && o.WarehouseId.Equals(values.WarehouseId));

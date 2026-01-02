@@ -19,11 +19,11 @@ public record DeliveryMethod : LookupObject<DeliveryMethodId>
 
     public static DeliveryMethod Create(DeliveryMethodId id, string name, bool active)
     {
-        Guard.Against.NullOrWhiteSpace(name);
+        DomainGuard.AgainstNullOrWhiteSpace(name);
 
         name = name.Trim();
 
-        Guard.Against.StringTooLong(name, DeliveryMethodValidationRules.DeliveryMethodNameMaxLength);
+        DomainGuard.AgainstStringTooLong(name, DeliveryMethodValidationRules.DeliveryMethodNameMaxLength);
 
         return new DeliveryMethod(id, name, active);
     }

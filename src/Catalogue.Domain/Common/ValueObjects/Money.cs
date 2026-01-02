@@ -25,14 +25,14 @@ public record Money : IValueObject<Money, Currency, decimal>
 
     public static Money Create(Currency currencyIsoCode, decimal value)
     {
-        Guard.Against.Negative(value);
+        DomainGuard.AgainstNegative(value);
 
         return new Money(currencyIsoCode, value);
     }
 
     public static Money Create(decimal value)
     {
-        Guard.Against.Negative(value);
+        DomainGuard.AgainstNegative(value);
 
         return new Money(Currency.GBP, value);
     }

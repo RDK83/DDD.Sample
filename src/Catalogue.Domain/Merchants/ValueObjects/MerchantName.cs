@@ -16,11 +16,11 @@ public record MerchantName : IStringValueObject<MerchantName>
 
     public static MerchantName Create(string merchantName)
     {
-        Guard.Against.NullOrWhiteSpace(merchantName);
+        DomainGuard.AgainstNullOrWhiteSpace(merchantName);
 
         merchantName = merchantName.Trim();
 
-        Guard.Against.StringTooLong(merchantName, MaxLength);
+        DomainGuard.AgainstStringTooLong(merchantName, MaxLength);
 
         return new MerchantName(merchantName);
     }

@@ -16,11 +16,11 @@ public record PrimaryAddressLine : IStringValueObject<PrimaryAddressLine>
 
     public static PrimaryAddressLine Create(string addressLine)
     {
-        Guard.Against.NullOrWhiteSpace(addressLine);
+        DomainGuard.AgainstNullOrWhiteSpace(addressLine);
 
         addressLine = addressLine.Trim();
 
-        Guard.Against.StringTooLong(addressLine, MaxLength);
+        DomainGuard.AgainstStringTooLong(addressLine, MaxLength);
 
         return new PrimaryAddressLine(addressLine);
     }

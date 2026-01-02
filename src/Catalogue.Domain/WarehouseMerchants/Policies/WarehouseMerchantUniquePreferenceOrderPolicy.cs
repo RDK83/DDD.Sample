@@ -7,17 +7,19 @@ public class WarehouseMerchantUniquePreferenceOrderPolicy
 {
     private readonly IReadOnlyCollection<PreferenceOrder> _existingWarehouseMerchantPreferenceOrders;
 
-    public WarehouseMerchantUniquePreferenceOrderPolicy(IReadOnlyCollection<PreferenceOrder> existingWarehouseMerchantPreferenceOrders)
+    public WarehouseMerchantUniquePreferenceOrderPolicy(
+        IReadOnlyCollection<PreferenceOrder> existingWarehouseMerchantPreferenceOrders)
     {
-        Guard.Against.Null(existingWarehouseMerchantPreferenceOrders);
+        DomainGuard.AgainstNull(existingWarehouseMerchantPreferenceOrders);
 
         _existingWarehouseMerchantPreferenceOrders = existingWarehouseMerchantPreferenceOrders;
     }
 
     public bool ValidateForUniqueness(PreferenceOrder newPreferenceOrder)
     {
-        Guard.Against.Null(newPreferenceOrder);
+        DomainGuard.AgainstNull(newPreferenceOrder);
 
-        return !_existingWarehouseMerchantPreferenceOrders.Any(preferenceOrder => Equals(preferenceOrder, newPreferenceOrder));
+        return !_existingWarehouseMerchantPreferenceOrders.Any(preferenceOrder =>
+            Equals(preferenceOrder, newPreferenceOrder));
     }
 }

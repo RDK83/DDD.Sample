@@ -23,10 +23,11 @@ public record WarehouseDeliveryLeadTime : IValueObject<WarehouseDeliveryLeadTime
 
     public static WarehouseDeliveryLeadTime Create(byte minLeadTime, byte maxLeadTime)
     {
-        Guard.Against.Zero(minLeadTime);
+        DomainGuard.AgainstZero(minLeadTime);
 
         if (minLeadTime > maxLeadTime)
-            throw new DomainValidationException("Min Lead Time cannot be greater than Max Lead Time", nameof(minLeadTime));
+            throw new DomainValidationException("Min Lead Time cannot be greater than Max Lead Time",
+                nameof(minLeadTime));
 
         return new WarehouseDeliveryLeadTime(minLeadTime, maxLeadTime);
     }

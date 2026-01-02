@@ -14,7 +14,7 @@ public readonly record struct WarehouseId : IIntegerValueObject<WarehouseId>
 
     public static WarehouseId Create(int warehouseId)
     {
-        Guard.Against.Zero(warehouseId);
+        DomainGuard.AgainstZero(warehouseId);
 
         return new WarehouseId(warehouseId);
     }

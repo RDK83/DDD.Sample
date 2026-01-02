@@ -18,7 +18,7 @@ public record ManufacturerClassification : LookupObject<ManufacturerClassificati
 
     public static ManufacturerClassification Create(string description, bool active)
     {
-        Guard.Against.NullOrWhiteSpace(description);
+        DomainGuard.AgainstNullOrWhiteSpace(description);
 
         description = description.Trim();
 

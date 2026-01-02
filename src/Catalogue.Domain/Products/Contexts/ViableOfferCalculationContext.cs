@@ -26,9 +26,9 @@ public record ViableOfferCalculationContext
         IReadOnlyCollection<WarehouseId> eligibleWarehouses,
         IReadOnlyCollection<WarehouseMerchantStatus> eligibleWarehouseMerchants)
     {
-        var eligibleMerchantsAsReadOnly = Guard.Against.Null(eligibleMerchants);
-        var eligibleWarehousesAsReadOnly = Guard.Against.Null(eligibleWarehouses);
-        var eligibleWarehouseMerchantsAsReadOnly = Guard.Against.Null(eligibleWarehouseMerchants);
+        var eligibleMerchantsAsReadOnly = DomainGuard.AgainstNull(eligibleMerchants);
+        var eligibleWarehousesAsReadOnly = DomainGuard.AgainstNull(eligibleWarehouses);
+        var eligibleWarehouseMerchantsAsReadOnly = DomainGuard.AgainstNull(eligibleWarehouseMerchants);
 
         return new ViableOfferCalculationContext(
             eligibleMerchantsAsReadOnly,

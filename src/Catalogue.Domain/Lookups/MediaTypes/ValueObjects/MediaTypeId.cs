@@ -14,7 +14,7 @@ public readonly record struct MediaTypeId : IByteValueObject<MediaTypeId>
 
     public static MediaTypeId Create(byte input)
     {
-        Guard.Against.Negative(input);
+        DomainGuard.AgainstNegative(input);
 
         return new MediaTypeId(input);
     }

@@ -21,7 +21,7 @@ public record AddressLine : INullableStringValueObject<AddressLine>
 
         addressLine = addressLine.Trim();
 
-        Guard.Against.StringTooLong(addressLine, MaxLength);
+        DomainGuard.AgainstStringTooLong(addressLine, MaxLength);
 
         return new AddressLine(addressLine);
     }

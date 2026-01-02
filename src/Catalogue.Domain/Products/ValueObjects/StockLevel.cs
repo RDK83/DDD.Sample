@@ -14,9 +14,9 @@ public readonly record struct StockLevel : IIntegerValueObject<StockLevel>
 
     public static StockLevel Create(int input)
     {
-        Guard.Against.Negative(input);
+        DomainGuard.AgainstNegative(input);
 
-        Guard.Against.OutOfRange(input, nameof(StockLevel), 0, 3000000);
+        DomainGuard.AgainstOutOfRange(input, 0, 3000000);
 
         return new StockLevel(input);
     }
